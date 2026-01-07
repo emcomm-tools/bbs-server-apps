@@ -1,0 +1,14 @@
+{
+    "database": {
+        "host": "localhost",
+        "port": 5432,
+        "user": "YOURCALL",
+        "password": "your_winlink_password",
+        "database": "YOURCALL"
+    },
+    "admin_callsign": "YOURCALL",
+    "default_role": "reader",
+    "max_line_length": 79,
+    "posts_per_page": 10,
+    "comments_per_page": 20
+}

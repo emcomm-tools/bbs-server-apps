@@ -1,0 +1,16 @@
+{
+    "zim_files": [
+        {
+            "name": "Ham Radio Encyclopedia",
+            "description": "EmComm-Tools Ham Radio Wiki",
+            "path": "~/wikipedia/emcomm-ham-wiki.zim"
+        },
+        {
+            "name": "Wikipedia Simple English",
+            "description": "Simple English Wikipedia - No images",
+            "path": "~/wikipedia/wikipedia_en_simple_all_nopic.zim"
+        }
+    ],
+    "default_max_chars": 2000,
+    "rf_callsign": "N0CALL"
+}

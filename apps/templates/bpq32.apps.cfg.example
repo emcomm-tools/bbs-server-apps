@@ -1,0 +1,164 @@
+; BBS Server Apps - LinBPQ Configuration Template
+; ================================================
+;
+; This is a sample BPQ configuration that includes all BBS Server Apps.
+; Copy relevant sections to your own bpq32.cfg or template file.
+;
+; Replace the following placeholders:
+;   {{YOURCALL}}     - Your amateur radio callsign
+;   {{YOUR_GRID}}    - Your Maidenhead grid square
+;   {{YOUR_PASSWD}}  - Your Winlink/system password
+;
+; For EmComm-Tools users, the placeholders {{ET_CALLSIGN}}, {{ET_GRID}}, etc.
+; are replaced automatically by the template system.
+
+SIMPLE
+LOCATOR={{YOUR_GRID}}
+NODECALL={{YOURCALL}}-7
+NODEALIAS=HAMNODE
+
+; =============================================================================
+; CTEXT - Connection Text (shows available commands)
+; =============================================================================
+CTEXT:
+========================================
+  Welcome to {{YOURCALL}} BPQ Node
+========================================
+
+Available Commands:
+-------------------
+Command  Description
+?        Show this help
+BBS      Connect to BBS
+CHAT     Chat with users
+INFO     Node information
+
+--- External Services ---
+WQF      Weather Quebec Forecast
+QRZ      Callsign Lookup (QRZ.com)
+HAMQSL   Solar Propagation Data
+SPACE    Space Weather Report
+RELAY    SMTP Email Relay
+WIKI     Offline Wikipedia
+ISDE     Canadian Callsign DB
+CLAUDE   Claude AI Assistant
+GEMINI   Google Gemini AI
+BLOG     Blog over HF
+
+========================================
+***
+FULL_CTEXT=1
+
+BTEXT:
+{{YOURCALL}} Amateur Radio BPQ Node
+***
+BTINTERVAL=15
+
+IDMSG:
+{{YOURCALL}}-7 Network node
+***
+
+INFOMSG:
+Welcome to the {{YOURCALL}} BPQ node in {{YOUR_GRID}}.
+
+To leave me a message:
+1. Connect to BBS by typing: bbs
+2. Send a private message: sp {{YOURCALL}}
+3. Enter a title and press [ENTER]
+4. Type your message (one line at a time)
+5. When done, type: /ex
+6. Press [ENTER]
+***
+
+MAPCOMMENT={{YOURCALL}} BPQ Node
+IDINTERVAL=0
+NODESINTERVAL=0
+
+; =============================================================================
+; PORT 1 - VARA HF (example, adjust for your setup)
+; =============================================================================
+PORT
+  PORTNUM=1
+  ID=HF VARA
+  DRIVER=VARA
+  INTERLOCK=4
+  CONFIG
+  ADDR 127.0.0.1 8300 PTT HAMLIB 
+  BW2750 
+  RIGCONTROL
+   HAMLIB 127.0.0.1:4532
+  ****
+  MYCALLS {{YOURCALL}} {{YOURCALL}}-7
+ENDPORT
+
+; =============================================================================
+; PORT 2 - Telnet (with BBS Server Apps)
+; =============================================================================
+PORT
+  PORTNUM=2
+  ID=Telnet
+  DRIVER=Telnet
+  QUALITY=0
+  CONFIG
+  ; CMDPORT includes all BBS Server App ports
+  ; Order matters: port position = HOST number (0-indexed)
+  ; HOST 0 = 63000 (WQF)
+  ; HOST 1 = 63010 (QRZ)
+  ; HOST 2 = 63020 (HAMQSL)
+  ; HOST 3 = 63030 (SPACE)
+  ; HOST 4 = 63040 (RELAY)
+  ; HOST 5 = 63050 (WIKI)
+  ; HOST 6 = 63060 (ISDE)
+  ; HOST 7 = 63070 (CLAUDE)
+  ; HOST 8 = 63080 (GEMINI)
+  ; HOST 9 = 63090 (BLOG)
+  CMDPORT 63000 63010 63020 63030 63040 63050 63060 63070 63080 63090
+  CMS=1
+  CMSCALL={{YOURCALL}}
+  CMSPASS=
+  RELAYAPPL=BBS
+  SECURETELNET=1
+  LOGGING=1
+  DisconnectOnClose=0
+  TCPPORT=8010
+  HTTPPORT=8012
+  LOGINPROMPT=user:
+  PASSWORDPROMPT=password:
+  MAXSESSIONS=15
+  CTEXT=Welcome to {{YOURCALL}}'s Telnet Server\nEnter ? for list of commands\n\n
+  USER=admin,{{YOUR_PASSWD}},{{YOURCALL}},"",sysop
+ENDPORT
+
+; =============================================================================
+; APPLICATIONS
+; =============================================================================
+; Standard BBS and CHAT applications
+APPLICATION 1,BBS,,{{YOURCALL}}-11,BBSSSID,255
+APPLICATION 2,CHAT,,{{YOURCALL}}-12,CHATSSID,255
+
+; BBS Server Apps (HOST number = position in CMDPORT, 0-indexed)
+; Format: APPLICATION num,NAME,C 2 HOST n NOCALL K S
+;   - num: Unique application number
+;   - NAME: Command users type (matches CTEXT)
+;   - C 2: Connect to PORT 2 (Telnet)
+;   - HOST n: Connect to nth port in CMDPORT list
+;   - NOCALL: Don't require callsign
+;   - K: Keep connection alive
+;   - S: Use raw socket mode
+
+APPLICATION 3,WQF,C 2 HOST 0 NOCALL K S
+APPLICATION 4,QRZ,C 2 HOST 1 NOCALL K S
+APPLICATION 5,HAMQSL,C 2 HOST 2 NOCALL K S
+APPLICATION 6,SPACE,C 2 HOST 3 NOCALL K S
+APPLICATION 7,RELAY,C 2 HOST 4 NOCALL K S
+APPLICATION 8,WIKI,C 2 HOST 5 NOCALL K S
+APPLICATION 9,ISDE,C 2 HOST 6 NOCALL K S
+APPLICATION 10,CLAUDE,C 2 HOST 7 NOCALL K S
+APPLICATION 11,GEMINI,C 2 HOST 8 NOCALL K S
+APPLICATION 12,BLOG,C 2 HOST 9 NOCALL K S
+
+; =============================================================================
+; BBS and CHAT Configuration
+; =============================================================================
+LINMAIL
+LINCHAT

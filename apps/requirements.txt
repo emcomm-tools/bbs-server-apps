@@ -1,0 +1,17 @@
+# BBS Server Apps - Python Dependencies
+# Install with: pip3 install -r requirements.txt
+
+# Core dependencies (required for most apps)
+requests>=2.28.0
+beautifulsoup4>=4.11.0
+lxml>=4.9.0
+
+# AI Gateway dependencies (optional - only for claude/gemini apps)
+anthropic>=0.18.0
+google-generativeai>=0.3.0
+
+# Blog app dependencies (optional - only for blog app)
+psycopg2-binary>=2.9.0
+
+# Wiki app dependencies (included in core, listed for clarity)
+# lxml is already listed above

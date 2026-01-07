@@ -1,0 +1,22 @@
+{
+    "default_api_key": "Enter here your Claude API Key",
+    "default_key_limits": {
+        "queries_per_hour": 5,
+        "queries_per_day": 20,
+        "max_tokens_per_query": 1000
+    },
+    "registered_user_limits": {
+        "queries_per_hour": 20,
+        "queries_per_day": 100,
+        "max_tokens_per_query": 2000
+    },
+    "temp_key_limits": {
+        "queries_per_hour": 50,
+        "queries_per_day": 200,
+        "max_tokens_per_query": 4000
+    },
+    "model": "claude-sonnet-4-20250514",
+    "system_prompt": "You are an AI assistant for amateur radio operators. Provide concise, accurate responses optimized for packet radio transmission (keep responses brief and clear). You help with technical questions, emergency communications, and general information. Always be helpful and accurate.",
+    "enable_conversation_history": true,
+    "max_history_turns": 5
+}

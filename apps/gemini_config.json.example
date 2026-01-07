@@ -1,0 +1,27 @@
+{
+    "default_api_key": "Enter here your Gemini API Key",
+    "default_key_limits": {
+        "queries_per_hour": 20,
+        "queries_per_day": 100,
+        "max_tokens_per_query": 1000
+    },
+    "registered_user_limits": {
+        "queries_per_hour": 20,
+        "queries_per_day": 100,
+        "max_tokens_per_query": 2000
+    },
+    "temp_key_limits": {
+        "queries_per_hour": 50,
+        "queries_per_day": 200,
+        "max_tokens_per_query": 4000
+    },
+    "model": "models/gemini-2.0-flash",
+    "system_instruction": "You are a helpful AI assistant accessible via amateur radio packet radio. Provide concise, accurate responses optimized for slow RF transmission (keep responses brief and clear). You can help with any topic including technical questions, general knowledge, translations, calculations, and information requests. Always be helpful, accurate, and remember responses are transmitted over radio so be concise.",
+    "enable_conversation_history": true,
+    "safety_settings": {
+        "HARM_CATEGORY_HARASSMENT": "BLOCK_NONE",
+        "HARM_CATEGORY_HATE_SPEECH": "BLOCK_NONE",
+        "HARM_CATEGORY_SEXUALLY_EXPLICIT": "BLOCK_NONE",
+        "HARM_CATEGORY_DANGEROUS_CONTENT": "BLOCK_NONE"
+    }
+}

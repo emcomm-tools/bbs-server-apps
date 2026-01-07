@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+#
+# QRZ.com API Configuration
+# 
+# Note: QRZ XML access requires a paid subscription.
+# Get your subscription at: https://www.qrz.com/i/subscriptions.html
+#
+
+qrz_user = "YOUR_QRZ_USERNAME"
+qrz_pass = "YOUR_QRZ_PASSWORD"

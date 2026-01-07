@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+
+# Config files with credentials (keep .example files)
+config.py
+claude_config.json
+gemini_config.json
+smtp_config.json
+wiki_config.json
+blog-app/blog_config.json
+claude_users.json
+
+# Usage tracking files
+*_usage.json
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Virtual environments
+venv/
+.venv/
+env/

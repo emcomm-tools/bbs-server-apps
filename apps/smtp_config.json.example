@@ -1,0 +1,8 @@
+{
+    "smtp_server": "smtp.gmail.com",
+    "smtp_port": 587,
+    "use_tls": true,
+    "gateway_email": "your.callsign@gmail.com",
+    "gateway_password": "your_app_password",
+    "gateway_name": "CALLSIGN SMTP Gateway"
+}
