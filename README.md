@@ -8,7 +8,7 @@ A collection of Python-based applications that extend LinBPQ's functionality, pr
 
 | App | Port | Description |
 |-----|------|-------------|
-| **WQF** | 63000 | Weather Forecast for QC, East Canada and North-East USA |
+| **WQF** | 63000 | Weather Forecast for province of QC |
 | **QRZ** | 63010 | QRZ.com callsign lookup (requires subscription) |
 | **HAMQSL** | 63020 | Solar propagation data from HamQSL |
 | **SPACE** | 63030 | Space weather report (solar flares, geomagnetic storms) |
